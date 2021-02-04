@@ -40,22 +40,15 @@ public class FactureServiceImpl implements FactureService {
 		return fListDTO;
 	}
 	
-	public FactureDTO getFactureByNum(String nom) {
+	public FactureDTO getFactureByNum(String num) {
 		
-		Facture f = dao.getFactureByNum(nom);
+		Facture f = dao.getFactureByNum(num);
 		FactureDTO fDTO = new FactureDTO(f);
-//		System.out.println(" !\nTaille de la liste : "+list.size());
-		
-//		for (Produit produit : list) {
-//			System.out.println("Nom produit dans service : "+produit.getNom());
-			if (fDTO.getNumero().equals(nom))
-			{
-//				System.out.println("IF is ON !!");
-//				System.out.println("paramètre fonction dans service: "+nom);
-//				System.out.println("Nom produit dans service : "+produit.getNom());
-				return fDTO;
-			}
+
+		if (fDTO.getNumero().equals(num))
+		{
+			return fDTO;
+		}
 		return null;
 	}
-	
 }

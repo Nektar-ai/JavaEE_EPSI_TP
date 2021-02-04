@@ -31,7 +31,7 @@
 
 	<%@ include file="commons/menu.jsp" %>
 	<br>
-	<h4>Création d'un nouveau client</h4>
+	<h4>Création d'un nouveau produit</h4>
 	<br><br>
 	<form action="produitform" method="post">
 		<label for="nomProduit">Nom</label><input type="text" name="nomProduit"/>

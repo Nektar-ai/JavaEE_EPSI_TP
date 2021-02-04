@@ -37,11 +37,25 @@ public class FactureDaoImpl implements FactureDao {
 		listFac = em.createQuery("SELECT f FROM Facture f ORDER BY f.id").getResultList();
 		return listFac;		
 	}
+
+// Méthodes recherchant une ou des Facture dans la database, avec un numero de facture passé en paramètre
 	
 	public Facture getFactureByNum(String n)
 	{		
-		Facture f = new Facture();
-		f = (Facture) em.createQuery("SELECT f FROM Facture f ORDER BY f.id WHERE f.nom = "+n).getSingleResult();
-		return f;		
+		Facture f1 = new Facture();		
+		System.out.println("Numero Facture paramètre :"+n);
+		f1 = (Facture) em.createQuery("SELECT f FROM Facture f WHERE f.numero = :n", Facture.class)
+				.setParameter("n", n)
+				.getSingleResult();		
+		return f1;
+	}
+
+	public List<Facture> getFactureByNumList(String n)
+	{		
+		List<Facture> f = new ArrayList<Facture>();		
+		f = em.createQuery("SELECT f FROM Facture f WHERE f.numero = :n", Facture.class)
+				.setParameter("n", n)
+				.getResultList();		
+		return f;
 	}
 }

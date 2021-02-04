@@ -8,4 +8,5 @@ public interface FactureDao
 {
 	public List<Facture> getListeFacture();
 	public Facture getFactureByNum(String n);
+	public List<Facture> getFactureByNumList(String n);
 }
