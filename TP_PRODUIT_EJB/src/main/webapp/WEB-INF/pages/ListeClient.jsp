@@ -20,7 +20,7 @@
         <table class="striped">
      	    <thead>
 	          	<tr>
-	              	<th>Numero</th>
+	              	<th>N°</th>
 	              	<th>Nom</th>
 	         		<th>Adresse</th>	              
 	        	</tr>

@@ -4,6 +4,7 @@ import fr.epsi.entity.Produit;
 
 public class ProduitDTO {
 
+	private Long id;
 	private String nom;
 	private String codeBarre;
 	private String prix;
@@ -19,9 +20,18 @@ public class ProduitDTO {
 	
 	public ProduitDTO (Produit p)
 	{
+		id = p.getId();
 		nom = p.getNom();
 		codeBarre = p.getCodeBarre();
 		prix = String.valueOf(p.getPrix());
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getNom() {

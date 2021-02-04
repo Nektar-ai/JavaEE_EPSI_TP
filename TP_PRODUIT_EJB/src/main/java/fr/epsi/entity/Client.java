@@ -60,5 +60,4 @@ public class Client {
 	{
 		this.adresse = a;
 	}
-	
 }

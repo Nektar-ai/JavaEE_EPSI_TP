@@ -4,6 +4,7 @@ import fr.epsi.entity.Client;
 
 public class ClientDTO {
 
+	private Long id;
 	private String nom;
 	private String adresse;
 	
@@ -11,6 +12,7 @@ public class ClientDTO {
 	
 	public ClientDTO(Client c)
 	{
+		id = c.getId();
 		nom = c.getNom();
 		adresse = c.getAdresse();
 	}
@@ -21,7 +23,18 @@ public class ClientDTO {
 		this.adresse = a;
 	}
 	
-	public String getNom() {
+	public Long getId() 
+	{
+		return id;
+	}
+	
+	public void setId(Long id) 
+	{
+		this.id = id;
+	}
+	
+	public String getNom() 
+	{
 		return nom;
 	}
 	

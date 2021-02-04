@@ -31,6 +31,6 @@ public class FactureDetailServlet extends HttpServlet {
 //		System.out.println("Nom produit dans servlet : "+bro);
 		req.setAttribute("produit", produit);
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/DetailProduit.jsp").forward(req, resp);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/DetailFacture.jsp").forward(req, resp);
 	}
 }

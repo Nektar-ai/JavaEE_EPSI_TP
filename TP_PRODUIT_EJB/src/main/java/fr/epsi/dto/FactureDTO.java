@@ -7,6 +7,7 @@ import fr.epsi.entity.Facture;
 
 public class FactureDTO {
 
+	private Long id;
 	private String date;
 	private String numero;
 	private double prix;
@@ -16,6 +17,7 @@ public class FactureDTO {
 	
 	public FactureDTO (Facture f) 
 	{
+		id = f.getId();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");		
 		date = formatter.format(f.getDate());
 		numero = f.getNumero();
@@ -30,6 +32,14 @@ public class FactureDTO {
 		this.client = client;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getDate() {
 		return date;
 	}
