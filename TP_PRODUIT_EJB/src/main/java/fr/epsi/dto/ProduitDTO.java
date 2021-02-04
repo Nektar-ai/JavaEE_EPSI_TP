@@ -1,11 +1,11 @@
 package fr.epsi.dto;
 
+import fr.epsi.entity.Produit;
+
 public class ProduitDTO {
 
 	private String nom;
 	private String codeBarre;
-
-
 	private String prix;
 	
 	public ProduitDTO () {}
@@ -15,6 +15,13 @@ public class ProduitDTO {
 		this.nom = n;
 		this.codeBarre = c;
 		this.prix = p;
+	}
+	
+	public ProduitDTO (Produit p)
+	{
+		nom = p.getNom();
+		codeBarre = p.getCodeBarre();
+		prix = String.valueOf(p.getPrix());
 	}
 	
 	public String getNom() {

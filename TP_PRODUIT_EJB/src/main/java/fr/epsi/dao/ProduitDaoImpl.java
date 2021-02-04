@@ -12,9 +12,14 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import fr.epsi.entity.Produit;
 
+/* 	Classe Représentant la couche repository pour l'entité Produit
+ *	Ainsi q'une annotation précisant au framework que cette classe fait autorité de transaction
+ */
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
 public class ProduitDaoImpl implements ProduitDao {
+	
+// Déclaration du contexte de persistence comme précisé dans le persistence.xml	
 	
 	@PersistenceContext(unitName = "produitPU")
 	EntityManager em;
@@ -24,10 +29,7 @@ public class ProduitDaoImpl implements ProduitDao {
 
 	public ProduitDaoImpl() { }
 	
-	public ProduitDaoImpl(EntityManager em, UserTransaction utx) {
-		this.em=em;
-		this.utx=utx;
-	}
+// Méthode permettant de faire persister un objet "Produit" dans la database, dans la table du même nom	
 	
 	public void create(Produit v) {
 		try {
@@ -38,6 +40,8 @@ public class ProduitDaoImpl implements ProduitDao {
 			e.printStackTrace();
 		}
 	}
+	
+// Méthode récupérant la liste des Produits déjà présents dans la database	
 	
 	public List<Produit> getListeProduit()
 	{

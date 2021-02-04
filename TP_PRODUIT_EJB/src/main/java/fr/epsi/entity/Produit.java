@@ -9,15 +9,26 @@ import javax.persistence.ManyToOne;
 
 import fr.epsi.dto.ProduitDTO;
 
+/* 	Classe représentant l'objet Produit, avec des attributs d'un type compatible avec ceux de la table client de la DataBase
+ *	L'annotation @Entity précise au framework que cette classe est liée à une table de la database
+ */
+
 @Entity
 public class Produit {
 
+/* 	Annotations déclarant l'attribut id comme clé primaire dans la database, 
+ * 	& sa génération automatique par la base de donnée
+ */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
 	private double prix;
 	private String codeBarre;
+	
+// Annotation déclarant une cardinalité n - 1 entre la table Produit & la table Facture	
+	
 	@ManyToOne
 	@JoinColumn(name = "facture_id")
 	private Facture facture;

@@ -11,10 +11,14 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import fr.epsi.entity.Client;
 
-
+/* 	Classe Représentant la couche repository pour l'entité Client
+	Ainsi q'une annotation précisant au framework que cette classe fait autorité de transaction
+*/
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
 public class ClientDaoImpl implements ClientDao {
+	
+// Déclaration du contexte de persistence comme précisé dans le persistence.xml	
 	
 	@PersistenceContext(unitName = "produitPU")
 	EntityManager em;
@@ -29,6 +33,8 @@ public class ClientDaoImpl implements ClientDao {
 		this.utx=utx;
 	}
 	
+// Méthode permettant de faire persister un objet "Client" dans la database, dans la table du même nom
+	
 	public void create(Client c) {
 		try {
 			utx.begin();
@@ -38,6 +44,8 @@ public class ClientDaoImpl implements ClientDao {
 			e.printStackTrace();
 		}
 	}
+
+// Méthode récupérant la liste des Clients déjà présents dans la database
 	
 	public List<Client> getListeClient()
 	{		

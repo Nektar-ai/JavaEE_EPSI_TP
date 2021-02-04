@@ -7,9 +7,17 @@ import javax.persistence.Id;
 
 import fr.epsi.dto.ClientDTO;
 
+/* 	Classe représentant l'objet Client, avec des attributs d'un type compatible avec ceux de la table client de la DataBase
+ *	L'annotation @Entity précise au framework que cette classe est liée à une table de la database
+ */
+
 @Entity
 public class Client {
 
+/* 	Annotations déclarant l'attribut id comme clé primaire dans la database, 
+ * 	& sa génération automatique par la base de donnée
+ */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

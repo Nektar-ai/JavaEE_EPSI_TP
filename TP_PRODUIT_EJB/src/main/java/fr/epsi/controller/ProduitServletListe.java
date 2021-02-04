@@ -15,9 +15,13 @@ import fr.epsi.dto.ProduitDTO;
 import fr.epsi.entity.Produit;
 import fr.epsi.service.ProduitService;
 
+// Annotation déclarant la route pour laquelle la Servlet va traiter les différentes methodes HTTP (GET, POST, PUT, etc...)
+
 @WebServlet("/produitliste")
 public class ProduitServletListe extends HttpServlet {
 
+// Injection de dépendance d'un objet ProduitService de la couche service
+	
 	@EJB 
 	ProduitService service;
 	
@@ -29,6 +33,8 @@ public class ProduitServletListe extends HttpServlet {
 			req.setAttribute("listeProduit", listProd);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ListeProduit.jsp").forward(req, resp);
 	    }
+	
+	 // Methode doPost récupérant les champs du formulaire de la page .jsp, afin de construire un objet DTO	
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 	        throws ServletException, IOException

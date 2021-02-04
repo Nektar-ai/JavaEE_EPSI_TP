@@ -7,4 +7,5 @@ import fr.epsi.entity.Facture;
 public interface FactureDao 
 {
 	public List<Facture> getListeFacture();
+	public Facture getFactureByNum(String n);
 }

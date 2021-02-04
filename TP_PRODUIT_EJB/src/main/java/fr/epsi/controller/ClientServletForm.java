@@ -12,9 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import fr.epsi.dto.ClientDTO;
 import fr.epsi.service.ClientService;
 
+// Annotation déclarant la route pour laquelle la Servlet va traiter les différentes methodes HTTP (GET, POST, PUT, etc...)
+
 @WebServlet("/clientform")
 public class ClientServletForm extends HttpServlet {
 
+// Injection de dépendance d'un objet ClientService	de la couche service
+	
 	@EJB 
 	ClientService service;
 	
@@ -24,6 +28,8 @@ public class ClientServletForm extends HttpServlet {
     		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/FormulaireClient.jsp").forward(req, resp);
         }
 	
+ // Methode doPost récupérant les champs du formulaire de la page .jsp, afin de construire un objet DTO    
+    
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException
         {

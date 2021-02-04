@@ -27,7 +27,8 @@
         <c:forEach var="Facture" items="${listeFacture}">
 	        <tbody>
 	          	<tr>
-	          		<td>${Facture.numero}</td>
+	          		<td><a href="facturedetail?nom=${facture.numero}" ${facture.numero}></a></td>
+	          		<%-- <td>${Facture.numero}</td> --%>
 	          		<td>${Facture.date}</td>
 		            <td>${Facture.client.nom}</td>
 		            <td>${Facture.prix} Euros</td>

@@ -20,13 +20,19 @@ import javax.transaction.UserTransaction;
 import fr.epsi.dao.ClientDao;
 import fr.epsi.dao.ClientDaoImpl;
 import fr.epsi.dto.ClientDTO;
+import fr.epsi.dto.FactureDTO;
 import fr.epsi.entity.Client;
+import fr.epsi.entity.Facture;
 
 @Stateless
 public class ClientServiceImpl implements ClientService {
 	
+// Injection de dépendance d'un objet la classe repository s'occupant de la persistence pour les objets Client	
+	
 	@EJB
 	ClientDao dao = new ClientDaoImpl();
+	
+// Création d'un objet Client, à partir de l'objet ClientDTO récupéré depuis le Controller
 	
 	public void create(ClientDTO cDTO)  
 	{
@@ -34,18 +40,24 @@ public class ClientServiceImpl implements ClientService {
 		dao.create(c);
 	
 	}
+	
 	public List<Client> getListeClient()
 	{		
 		return dao.getListeClient();
 	}
+
+/* 	Création d'une liste d'objets ClientDTO à partir d'une liste d'objets Client, 
+ * 	afin d'éviter d'envoyer des objets Clients au Controller, et donc à la Vue
+ */	
 	
 	public List<ClientDTO> getListeClientDTO()
 	{
 		List<ClientDTO> listClientDTO= new ArrayList<ClientDTO>();
-		ClientDTO client3 = new ClientDTO("Lars Jenkins", "9 rue fuckface");
-		ClientDTO client4 = new ClientDTO("John Cologne", "10 rue du nez");
-		listClientDTO.add(client3);
-		listClientDTO.add(client4);
+		for (Client c : dao.getListeClient()) 
+		{
+			ClientDTO cDTO = new ClientDTO(c);
+			listClientDTO.add(cDTO);
+		}
 		return listClientDTO;
 	}
 }

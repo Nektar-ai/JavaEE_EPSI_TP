@@ -9,4 +9,5 @@ public interface FactureService
 {
 	public List<Facture> getListeFacture();
 	public List<FactureDTO> getListeFactureDTO();
+	public FactureDTO getFactureByNum(String n);
 }

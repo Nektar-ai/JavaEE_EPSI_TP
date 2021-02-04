@@ -12,9 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import fr.epsi.entity.Produit;
 import fr.epsi.service.ProduitService;
 
-@WebServlet("/produitdetail")
-public class ProduitDetailServlet extends HttpServlet {
+// Annotation déclarant la route pour laquelle la Servlet va traiter les différentes methodes HTTP (GET, POST, PUT, etc...)
 
+@WebServlet("/facturedetail")
+public class FactureDetailServlet extends HttpServlet {
+
+// Injection de dépendance d'un objet ProduitService de la couche service	
+	
 	@EJB
 	private ProduitService service;
 	
