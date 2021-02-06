@@ -3,8 +3,11 @@ package fr.epsi.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+
 import fr.epsi.dto.FactureDTO;
 import fr.epsi.entity.Facture;
 import fr.epsi.entity.LigneFacture;
@@ -71,11 +74,17 @@ public class FactureServiceImpl implements FactureService {
 	{		
 		List<Produit> prodList = serviceprod.getListeProduit();
 		List<LigneFacture> lFList = new ArrayList<LigneFacture>();
-		for (Produit produit : prodList) {
-			LigneFacture lF = new LigneFacture(produit, 2);
+		Random r = new Random();
+		int ran = r.nextInt(100-1) + 1;
+		int ran2 = r.nextInt((prodList.size()+1)-1);
+		
+		for (int i = 0; i <= ran2; i++)
+		{
+			LigneFacture lF = new LigneFacture(prodList.get(i), r.nextInt(5-1) + 1);
 			lFList.add(lF);
 		}
-		Facture f = new Facture(new Date(), "F004", serviceclient.getListeClient().get(0), lFList);
+
+		Facture f = new Facture(new Date(), "F"+String.valueOf(ran), serviceclient.getListeClient().get(0), lFList);
 		for (LigneFacture lF : lFList) {
 			lF.setFacture(f);
 		}		
