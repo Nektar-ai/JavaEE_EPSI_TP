@@ -2,25 +2,10 @@ package fr.epsi.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
-
 import fr.epsi.dto.ClientDTO;
-import fr.epsi.dto.FactureDTO;
 import fr.epsi.entity.Client;
-import fr.epsi.entity.Facture;
 import fr.epsi.repository.ClientRepository;
 import fr.epsi.repository.ClientRepositoryImpl;
 

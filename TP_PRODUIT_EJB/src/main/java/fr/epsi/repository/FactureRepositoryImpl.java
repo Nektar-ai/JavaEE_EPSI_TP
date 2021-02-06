@@ -2,7 +2,6 @@ package fr.epsi.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
@@ -10,7 +9,6 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
-
 import fr.epsi.entity.Facture;
 import fr.epsi.entity.LigneFacture;
 

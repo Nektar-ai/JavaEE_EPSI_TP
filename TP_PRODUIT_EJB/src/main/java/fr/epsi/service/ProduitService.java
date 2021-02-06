@@ -8,5 +8,6 @@ public interface ProduitService {
 
 	public void create(ProduitDTO p);
 	public List<Produit> getListeProduit();
+	public List<ProduitDTO> getListeProduitDTO();
 	public Produit findProductByName(String n);
 }

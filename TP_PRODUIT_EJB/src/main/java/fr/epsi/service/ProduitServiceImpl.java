@@ -2,19 +2,9 @@ package fr.epsi.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.UserTransaction;
-
-import fr.epsi.dto.ClientDTO;
 import fr.epsi.dto.ProduitDTO;
-import fr.epsi.entity.Client;
 import fr.epsi.entity.Produit;
 import fr.epsi.repository.ProduitRepository;
 import fr.epsi.repository.ProduitRepositoryImpl;

@@ -29,12 +29,7 @@ public class Produit {
 	private double prix;
 	private String codeBarre;
 	
-// Annotation déclarant une cardinalité n - 1 entre la table Produit & la table Facture	
-	
-//	@ManyToMany
-//	private List<Facture> factures;
-	
-	
+// Annotation déclarant une cardinalité 1 - n entre la table Produit & la table LigneFacture	
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
 	private List<LigneFacture> lignefacture;

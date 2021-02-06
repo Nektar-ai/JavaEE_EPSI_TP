@@ -1,7 +1,5 @@
 package fr.epsi.entity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -13,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
 import fr.epsi.dto.FactureDTO;
 
 /*	Classe représentant l'objet Client, avec des attributs d'un type compatible avec ceux de la table client de la database
@@ -26,6 +23,9 @@ public class Facture {
 /* 	Annotations déclarant l'attribut id comme clé primaire dans la database, 
  * 	& sa génération automatique par la base de donnée
  */	
+	
+//	@EJB
+//	ClientRepository dao;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +46,18 @@ public class Facture {
 	private Client client;	
 
 	public Facture() {}
+	
+	public Facture(Long id, Date date, String n, Client c, List<LigneFacture> lFList) 
+	{
+		this.id = id;
+		this.date = date;
+		this.numero = n;
+		this.client = c;
+		this.lignefacture = lFList;
+		for (LigneFacture ligneFacture : lFList) {
+			this.prix += ligneFacture.getPrix();
+		}
+	}
 	
 	public Facture(Date date, String n, Client c, List<LigneFacture> lFList) 
 	{
@@ -70,15 +82,9 @@ public class Facture {
 	public Facture(FactureDTO f)
 	{
 		this.id = f.getId();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-		try {
-			this.date = formatter.parse(f.getDate());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		this.date = f.getDate();
 		this.numero = f.getNumero();
 		this.prix = f.getPrix();
-		this.client = new Client (f.getClient());
 	}
 	
 	public Long getId() 

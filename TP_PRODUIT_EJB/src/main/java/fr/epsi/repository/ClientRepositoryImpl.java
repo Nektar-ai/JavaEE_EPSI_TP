@@ -48,4 +48,13 @@ public class ClientRepositoryImpl implements ClientRepository {
 		listClient = em.createQuery("SELECT c FROM Client c ORDER BY c.id").getResultList();
 		return listClient;		
 	}
+	
+	public Client getClientByNom(String n)
+	{
+		Client client = (Client)em.createQuery("SELECT c FROM Client c WHERE c.nom = :n")
+				.setParameter("n", n)
+				.getSingleResult();		
+		return client;
+	}
+	
 }

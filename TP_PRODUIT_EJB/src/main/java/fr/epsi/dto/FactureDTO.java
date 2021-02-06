@@ -1,28 +1,29 @@
 package fr.epsi.dto;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.List;
 import fr.epsi.entity.Facture;
+import fr.epsi.entity.LigneFacture;
 
 public class FactureDTO {
 
 	private Long id;
-	private String date;
+	private Date date;
 	private String numero;
 	private double prix;
 	private ClientDTO client;
-	
+	private List<LigneFacture> lignefacture;
+
 	public FactureDTO( ) {}
 	
 	public FactureDTO (Facture f) 
 	{
 		id = f.getId();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");		
-		date = formatter.format(f.getDate());
+		date = f.getDate();
 		numero = f.getNumero();
 		prix = f.getPrix();		
 		client = new ClientDTO(f.getClient());
+		lignefacture = f.getLignesFacture();
 	}
 	
 	public ClientDTO getClient() {
@@ -39,24 +40,36 @@ public class FactureDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public String getDate() {
+
+	public Date getDate() {
 		return date;
 	}
+	
 	public void setDate(Date date) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");		
-		this.date = formatter.format(date);
+		this.date = date;
 	}
+	
 	public String getNumero() {
 		return numero;
 	}
+	
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+	
 	public double getPrix() {
 		return prix;
 	}
+	
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+	
+	public List<LigneFacture> getLignefacture() {
+		return lignefacture;
+	}
+
+	public void setLignefacture(List<LigneFacture> lignefacture) {
+		this.lignefacture = lignefacture;
+	}	
 }

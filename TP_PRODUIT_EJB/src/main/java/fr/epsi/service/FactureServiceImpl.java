@@ -3,14 +3,14 @@ package fr.epsi.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-
 import fr.epsi.dto.FactureDTO;
 import fr.epsi.entity.Facture;
 import fr.epsi.entity.LigneFacture;
 import fr.epsi.entity.Produit;
+import fr.epsi.repository.ClientRepository;
+import fr.epsi.repository.ClientRepositoryImpl;
 import fr.epsi.repository.FactureRepository;
 import fr.epsi.repository.FactureRepositoryImpl;
 
@@ -22,6 +22,9 @@ public class FactureServiceImpl implements FactureService {
 	@EJB
 	FactureRepository dao = new FactureRepositoryImpl();
 
+	@EJB
+	ClientRepository daoclient = new ClientRepositoryImpl();
+	
 // Injection de dépendance du service pour les objets la classe Client pour la génération d'une DummyFacture pour les tests dev	
 	
 	@EJB
@@ -41,8 +44,13 @@ public class FactureServiceImpl implements FactureService {
  * 	afin d'éviter d'envoyer des objets Factures au Controller, et donc à la Vue
  */
 	
-	public void create (Facture f) 
+	public void create (FactureDTO fd) 
 	{
+//		Facture f = new Facture(fd);
+		Facture f = new Facture(fd.getDate(), fd.getNumero(), daoclient.getClientByNom(fd.getClient().getNom()), fd.getLignefacture());
+		for (LigneFacture lF : f.getLignesFacture()) {
+			lF.setFacture(f);
+		}
 		dao.create(f);
 	}
 	
@@ -71,7 +79,6 @@ public class FactureServiceImpl implements FactureService {
 		for (LigneFacture lF : lFList) {
 			lF.setFacture(f);
 		}		
-		
 		return f;
 	}
 	

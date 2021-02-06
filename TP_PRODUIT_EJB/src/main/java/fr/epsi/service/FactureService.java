@@ -14,5 +14,5 @@ public interface FactureService
 	public Facture getDummyFacture();
 	public List<LigneFacture> getLigneFactureByFacId(Long id);
 	public void setListeLigneFacture(Facture f, List<LigneFacture> lFList);
-	public void create (Facture f);
+	public void create (FactureDTO f);
 }

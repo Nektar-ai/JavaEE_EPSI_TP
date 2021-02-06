@@ -34,9 +34,9 @@ public class ClientServletForm extends HttpServlet {
             throws ServletException, IOException
         {
     		String nom = req.getParameter("nomClient");
-    		String codeBarre = req.getParameter("adresseClient");
-    		ClientDTO p = new ClientDTO(nom, codeBarre);
-    		service.create(p);
+    		String adresse = req.getParameter("adresseClient");
+    		ClientDTO c = new ClientDTO(nom, adresse);
+    		service.create(c);
     		resp.sendRedirect("/TP_PRODUIT_EJB-0.0.1-SNAPSHOT/clientliste");
         }
 }
