@@ -1,11 +1,13 @@
 package fr.epsi.entity;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import fr.epsi.dto.ProduitDTO;
 
@@ -29,10 +31,14 @@ public class Produit {
 	
 // Annotation déclarant une cardinalité n - 1 entre la table Produit & la table Facture	
 	
-	@ManyToOne
-	@JoinColumn(name = "facture_id")
-	private Facture facture;
+//	@ManyToMany
+//	private List<Facture> factures;
 	
+	
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+	private List<LigneFacture> lignefacture;
+
 	public Produit() {}
 	
 	public Produit (String n, String c) 
@@ -77,6 +83,14 @@ public class Produit {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+	
+	public List<LigneFacture> getLignefacs() {
+		return lignefacture;
+	}
+
+	public void setLignefacs(List<LigneFacture> lignefacs) {
+		this.lignefacture = lignefacs;
 	}
 	
 }

@@ -23,7 +23,7 @@ public class ClientDTO {
 		this.adresse = a;
 	}
 	
-	public Long getId() 
+	public Long getId()
 	{
 		return id;
 	}

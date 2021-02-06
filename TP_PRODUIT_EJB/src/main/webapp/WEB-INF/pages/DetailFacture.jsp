@@ -8,6 +8,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Detail Facture</title>
+<style>
+
+	table {
+	  	table-layout: fixed;
+		width: 100px;
+	}
+
+</style>
 <%@ include file="commons/header.jsp" %>
 </head>
 <body>
@@ -20,22 +28,45 @@
         <table class="striped">
      	    <thead>
 	          	<tr>
-	              	<th>N°</th>
-	              	<th>Date</th>
-	              	<th>Client</th>
-	         		<th>Montant</th>	              
+	              	<th>Nom</th>
+	              	<th>Code Barre</th>
+	              	<th>Quantite</th>
+	         		<th>Prix Unitaire</th>
+	         		<th>Montant</th>
+	         		<th>Prix Total</th>              
 	        	</tr>
 	        </thead>
+	        <tr>
+        <c:forEach var="lignefac" items="${lignefacture}">        
+	        <tbody>
+	          	
+	          		<td>${lignefac.produit.nom}</td>
+	          		<td>${lignefac.produit.codeBarre}</td>
+					<td>${lignefac.qte}</td>
+					<td>${lignefac.produit.prix} Euros</td>
+		            <td>${lignefac.prix} Euros</td>
+	        	
+	        </c:forEach>
+					
+	        		
+
+	          	
+	        </tbody>
+	        
+		</table>
+		
+ 		<table style="text-align: right; border: none;">
         
 	        <tbody>
 	          	<tr>
-	          		<td>${facture.numero}</td>
-	          		<td>${facture.date}</td>
-		            <td>${facture.client.nom}</td>
-		            <td>${facture.prix} Euros</td>
+	          	<td></td><td> </td><td> </td><td> </td><td> </td>
+	          		<td>${facture.prix} Euros</td>
+
 	          	</tr>
 	        </tbody>
+
 		</table>
+		
 <%@ include file="commons/footer.jsp" %>
 </body>
 </html>

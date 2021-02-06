@@ -1,4 +1,4 @@
-package fr.epsi.dao;
+package fr.epsi.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import fr.epsi.entity.Client;
 */
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
-public class ClientDaoImpl implements ClientDao {
+public class ClientRepositoryImpl implements ClientRepository {
 	
 // Déclaration du contexte de persistence comme précisé dans le persistence.xml	
 	
@@ -26,12 +26,7 @@ public class ClientDaoImpl implements ClientDao {
 	@Resource
 	UserTransaction utx;
 
-	public ClientDaoImpl() {}
-	
-	public ClientDaoImpl(EntityManager em, UserTransaction utx) {
-		this.em=em;
-		this.utx=utx;
-	}
+	public ClientRepositoryImpl() {}
 	
 // Méthode permettant de faire persister un objet "Client" dans la database, dans la table du même nom
 	

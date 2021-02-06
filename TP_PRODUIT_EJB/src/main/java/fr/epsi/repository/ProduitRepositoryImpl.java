@@ -1,4 +1,4 @@
-package fr.epsi.dao;
+package fr.epsi.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import fr.epsi.entity.Produit;
  */
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
-public class ProduitDaoImpl implements ProduitDao {
+public class ProduitRepositoryImpl implements ProduitRepository {
 	
 // Déclaration du contexte de persistence comme précisé dans le persistence.xml	
 	
@@ -27,7 +27,7 @@ public class ProduitDaoImpl implements ProduitDao {
 	@Resource
 	UserTransaction utx;
 
-	public ProduitDaoImpl() { }
+	public ProduitRepositoryImpl() { }
 	
 // Méthode permettant de faire persister un objet "Produit" dans la database, dans la table du même nom	
 	

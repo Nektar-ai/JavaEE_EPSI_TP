@@ -12,12 +12,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
-import fr.epsi.dao.ProduitDao;
-import fr.epsi.dao.ProduitDaoImpl;
 import fr.epsi.dto.ClientDTO;
 import fr.epsi.dto.ProduitDTO;
 import fr.epsi.entity.Client;
 import fr.epsi.entity.Produit;
+import fr.epsi.repository.ProduitRepository;
+import fr.epsi.repository.ProduitRepositoryImpl;
 
 @Stateless
 public class ProduitServiceImpl implements ProduitService {
@@ -25,7 +25,7 @@ public class ProduitServiceImpl implements ProduitService {
 // Injection de dépendance d'un objet la classe repository s'occupant de la persistence pour les objets Client	
 	
 	@EJB
-	ProduitDao dao = new ProduitDaoImpl();
+	ProduitRepository dao = new ProduitRepositoryImpl();
 	
 // Création d'un objet Produit, à partir de l'objet ProduitDTO récupéré depuis le Controller	
 	
@@ -60,14 +60,9 @@ public class ProduitServiceImpl implements ProduitService {
 	public Produit findProductByName(String n)
 	{
 		List<Produit> list = getListeProduit();
-		System.out.println(" !\nTaille de la liste : "+list.size());
 		for (Produit produit : list) {
-			System.out.println("Nom produit dans service : "+produit.getNom());
 			if (produit.getNom().equals(n))
 			{
-				System.out.println("IF is ON !!");
-				System.out.println("paramètre fonction dans service: "+n);
-				System.out.println("Nom produit dans service : "+produit.getNom());
 				return produit;
 			}
 		}

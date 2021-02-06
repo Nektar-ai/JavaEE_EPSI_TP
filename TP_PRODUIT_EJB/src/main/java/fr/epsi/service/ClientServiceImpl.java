@@ -17,12 +17,12 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-import fr.epsi.dao.ClientDao;
-import fr.epsi.dao.ClientDaoImpl;
 import fr.epsi.dto.ClientDTO;
 import fr.epsi.dto.FactureDTO;
 import fr.epsi.entity.Client;
 import fr.epsi.entity.Facture;
+import fr.epsi.repository.ClientRepository;
+import fr.epsi.repository.ClientRepositoryImpl;
 
 @Stateless
 public class ClientServiceImpl implements ClientService {
@@ -30,7 +30,7 @@ public class ClientServiceImpl implements ClientService {
 // Injection de dépendance d'un objet la classe repository s'occupant de la persistence pour les objets Client	
 	
 	@EJB
-	ClientDao dao = new ClientDaoImpl();
+	ClientRepository dao = new ClientRepositoryImpl();
 	
 // Création d'un objet Client, à partir de l'objet ClientDTO récupéré depuis le Controller
 	
